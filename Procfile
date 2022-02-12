@@ -1,1 +1,1 @@
-web: bin/axisnet
+web: bin/go-getting-started
