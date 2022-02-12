@@ -1,9 +1,9 @@
 package main
 
 import (
-	"axis/api"
 	"net/http"
 
+	"github.com/adipatiarya/apis/api"
 	"github.com/gin-gonic/gin"
 )
 
