@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/adipatiarya/apis/api"
 	"github.com/gin-gonic/gin"
@@ -20,6 +21,8 @@ type PackageParam struct {
 }
 
 func main() {
+
+	port := os.Getenv("PORT")
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 	router.POST("/otp", func(c *gin.Context) {
@@ -97,7 +100,7 @@ func main() {
 		}
 	})
 
-	router.Run(":5000")
+	router.Run(":" + port)
 }
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
