@@ -21,8 +21,11 @@ type PackageParam struct {
 }
 
 func main() {
+	port := os.Getenv("HTTP_PLATFORM_PORT")
+	if port == "" {
+		port = "8080"
+	}
 
-	port := os.Getenv("PORT")
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 	router.POST("/otp", func(c *gin.Context) {
@@ -100,7 +103,7 @@ func main() {
 		}
 	})
 
-	router.Run(":" + port)
+	router.Run("127.0.0.1:" + port)
 }
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
