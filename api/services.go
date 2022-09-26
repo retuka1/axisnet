@@ -91,16 +91,23 @@ func LoginOtp(msisdn, otp string) (Response, error) {
 }
 
 type BuyPackageParams struct {
-	ServiceId string `json:"service_id"`
-	Type      string `json:"type"`
+	Repurchase   bool   `json:"repurchase"`
+	ServiceType  string `json:"service_type"`
+	Soccd        string `json:"soccd"`
+	ServiceId    string `json:"service_id"`
+	Tnc          bool   `json:"tnc"`
+	CouponNumber string `json:"coupon_number"`
 }
 
 func BuyPackage(token, service_id string) (Response, error) {
 	BASE_URL := "https://trxpackages.api.axis.co.id/package/buy/v2"
 
 	payload, _ := json.Marshal(&BuyPackageParams{
-		ServiceId: service_id,
-		Type:      "PACKAGE",
+		Repurchase:   true,
+		ServiceType:  "PACKAGE",
+		ServiceId:    service_id,
+		Tnc:          true,
+		CouponNumber: "",
 	})
 	headers["Authorization"] = token
 	headers["x-app-version"] = "7.12.1"
