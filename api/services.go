@@ -173,3 +173,9 @@ func fetchData(method string, headers map[string]string, baseUrl string, payload
 
 	return resp, nil
 }
+func Encrypt(msisdn string) string {
+	return  utils.Encrypt(msisdn, PRIVATE_KEY)
+}
+func Decrypt(msisdn string) string {
+	return  utils.Decrypt(msisdn, PRIVATE_KEY)
+}

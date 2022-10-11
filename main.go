@@ -102,6 +102,19 @@ func main() {
 
 		}
 	})
+	router.GET("/axis/encrypt", func(c *gin.Context) {
+		
+		msisdn := c.Query("msisdn") // shortcut for c.Request.URL.Query().Get("lastname")
+
+		c.JSON(http.StatusOK, gin.H{"result":api.Encrypt(msisdn)})
+
+	
+	})
+	router.GET("/axis/decrypt", func(c *gin.Context) {
+		
+		str := c.Query("string") // shortcut for c.Request.URL.Query().Get("lastname")
+		c.JSON(http.StatusOK, gin.H{"result":api.Decrypt(str)})
+	})
 
 	router.Run("127.0.0.1:" + port)
 }
