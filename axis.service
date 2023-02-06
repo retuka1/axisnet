@@ -1,0 +1,13 @@
+[Unit]
+Description=Tembak Paket Axis Api
+
+[Service]
+User=root
+ExecStart=/usr/bin/axis
+Type=simple
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
